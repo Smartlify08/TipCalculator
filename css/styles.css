@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+
+*{
+     padding: 0;
+     margin:0;
+     box-sizing: border-box;
+}
+
+:root{
+     --clr-primary:hsl(172, 67%, 45%);
+     --clr-gray:hsl(184, 14%, 56%);
+     --clr-dark: hsl(183, 100%, 15%);
+     --clr-secondary:hsl(185, 41%, 84%);
+     --clr-light:hsl(189, 41%, 97%);
+     --clr-lighter:hsl(0, 0%, 100%);
+     --clr-error:rgb(218, 18, 55);
+}
+
+
+body{
+     font-size: 15px;
+     line-height: 1.5rem;
+     color: #333;
+     font-family: 'Space Mono', monospace;
+     background-color: var(--clr-secondary);
+     min-height: 100vh;
+     flex-direction: column;
+     justify-content: center;
+}
+
+.bg-primary{
+     background-color: var(--clr-primary) !important;
+}
+
+.text-dark{
+     color:var(--clr-dark) !important;
+}
+
+.bg-dark{
+     background-color: var(--clr-dark);
+}
+
+.bg-secondary{
+     background-color: var(--clr-secondary) !important;
+}
+
+.btn-primary{
+     background-color: var(--clr-primary) !important;
+     border:none;
+     transition:background 1s ease;
+}
+
+.btn-primary:focus{
+     background-color:var(--clr-secondary) !important;
+     border:none !important;
+     box-shadow: none !important;
+}
+
+.btn-active:active{
+     background-color:var(--clr-secondary) !important;
+     border:none !important;
+     box-shadow: none !important;
+}
+
+
+.app-header{
+     width: 50%;
+     letter-spacing: 20px;
+     word-wrap: break-word;
+     margin: 2rem 0 !important;
+     display: flex;
+     justify-content: center;
+}
+
+input[type="text"]{
+     background-color: var(--clr-secondary) !important;
+     border:none;
+     font-size: 1.3rem;
+}
+
+input[type="text"]:focus{
+     border: 2px solid var(--clr-primary) !important;
+     box-shadow: none !important;
+}
+
+.card{
+     border-radius:15px !important;
+}
+
+.boxes{
+     display: grid;
+     grid-template-columns: repeat(3,1fr);
+     gap: 10px;
+}
+
+.display-section{
+     background-color: var(--clr-dark) !important;
+}
+
+.select-box{
+     background-color: var(--clr-dark);
+     padding: 3px  0px;
+     border-radius: 4px;
+     border:none;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+}
+
+.select-box:focus{
+     border:none;
+     box-shadow: none !important;
+}
+
+.dollar-img{
+     height:30px;
+
+}
+
+input[type='submit']{
+     font-size: 22px;
+}
+
+
+
+@media screen and (max-width:991px){
+     .display-section{
+          margin-top: 20px;
+     }
+
+     .boxes{
+          grid-template-columns: repeat(2,1fr);
+          gap: 15px;
+     }
+     
+
+
+
+}
+
+
