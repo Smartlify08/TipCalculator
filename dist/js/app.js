@@ -37,23 +37,24 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
      let body = document.querySelector('body')
      let text = document.createElement('p');
      text.textContent = 'Please Fill in all fields';
-     // let tipValues = document.querySelector('.tip-percentages');
+     let billSection = document.querySelector('.bill-section');
+     let peopleSection = document.querySelector('.people-section');
      // tipValues.appendChild(text);
 
      const showBorder = () => {
           bill_input.style.border = '2px solid red';
           people_input.style.border = '2px solid red';
-
+          billSection.appendChild(text);
           // console.log(text.textContent);
           // body.insertBefore(text, tipValues);
-          let timing = 3000;
+          let timing = 1000;
           setTimeout(removeBorder, timing);
      }
 
      const removeBorder = () => {
           bill_input.style.border = 'none';
           people_input.style.border = 'none';
-          text.style.display = 'none';
+          billSection.removeChild(text);
      }
 
 

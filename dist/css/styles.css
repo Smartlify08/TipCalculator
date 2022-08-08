@@ -126,6 +126,10 @@ input[type='submit']{
 
 
 @media screen and (max-width:991px){
+
+     body{
+          overflow-x: hidden;
+     }
      .display-section{
           margin-top: 20px;
      }
@@ -135,7 +139,10 @@ input[type='submit']{
           gap: 15px;
      }
      
-
+     .card{
+          width:100% !important;
+          overflow: hidden;
+     }
 
 
 }
