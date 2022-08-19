@@ -29,6 +29,10 @@ body{
      justify-content: center;
 }
 
+
+
+
+
 .bg-primary{
      background-color: var(--clr-primary) !important;
 }
@@ -61,7 +65,11 @@ body{
      background-color:var(--clr-secondary) !important;
      border:none !important;
      box-shadow: none !important;
+
 }
+
+
+
 
 
 .app-header{
@@ -72,6 +80,9 @@ body{
      display: flex;
      justify-content: center;
 }
+
+
+
 
 input[type="text"]{
      background-color: var(--clr-secondary) !important;
@@ -84,9 +95,17 @@ input[type="text"]:focus{
      box-shadow: none !important;
 }
 
+
+
+
+
+
 .card{
      border-radius:15px !important;
 }
+
+
+
 
 .boxes{
      display: grid;
@@ -94,9 +113,14 @@ input[type="text"]:focus{
      gap: 10px;
 }
 
+
+
 .display-section{
      background-color: var(--clr-dark) !important;
 }
+
+
+
 
 .select-box{
      background-color: var(--clr-dark);
@@ -109,19 +133,43 @@ input[type="text"]:focus{
      cursor: pointer;
 }
 
+
+
+
+
+
 .select-box:focus{
      border:none;
      box-shadow: none !important;
 }
+
+
+
+
+
 
 .dollar-img{
      height:30px;
 
 }
 
+
+.error-message{
+     display: none;
+}
+
+
+
 input[type='submit']{
      font-size: 22px;
 }
+
+
+
+
+
+
+
 
 
 
@@ -130,6 +178,7 @@ input[type='submit']{
      body{
           overflow-x: hidden;
      }
+
      .display-section{
           margin-top: 20px;
      }

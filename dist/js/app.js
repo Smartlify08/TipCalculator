@@ -33,34 +33,85 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
      // console.log(ttip.totaltip)
 
      // let message = 'Please Fill in all fields'
-
-     let body = document.querySelector('body')
-     let text = document.createElement('p');
-     text.textContent = 'Please Fill in all fields';
-     let billSection = document.querySelector('.bill-section');
-     let peopleSection = document.querySelector('.people-section');
      // tipValues.appendChild(text);
 
+     const errorMessage = document.querySelectorAll('.error-message');
+
+
+     // Show border for both inputs
      const showBorder = () => {
           bill_input.style.border = '2px solid red';
           people_input.style.border = '2px solid red';
-          billSection.appendChild(text);
+          let timing = 1000;
+          setTimeout(removeBorder, timing);
+          errorMessage.forEach((error) => error.style.display = 'block');
+     }
+
+
+     // Show Border for the bill Input
+     const billShowBorder = () => {
+          bill_input.style.border = '2px solid red';
+          // billSection.appendChild(text);
           // console.log(text.textContent);
           // body.insertBefore(text, tipValues);
           let timing = 1000;
           setTimeout(removeBorder, timing);
+          errorMessage[0].style.display = 'block';
      }
 
+
+
+     // Show border for people input
+     const peopleShowBorder = () => {
+          people_input.style.border = '2px solid red'
+          let timing = 1000;
+          setTimeout(removeBorder, timing);
+          errorMessage[1].style.display = 'block'
+     }
+
+
+
+
+     // Removes border from each input
      const removeBorder = () => {
           bill_input.style.border = 'none';
           people_input.style.border = 'none';
-          billSection.removeChild(text);
+          errorMessage.forEach((error) => {
+               error.style.display = 'none';
+          })
+          // billSection.removeChild(text);
      }
 
 
 
-     if (isNaN(billValue) || isNaN(peopleValue) || billValue.value === '' || peopleValue.value === '') {
+
+
+
+
+
+
+
+
+     // Validations
+
+     if (bill_input.value === '' && people_input.value === '' || isNaN(bill_input.value) && isNaN(people_input.value)) {
           showBorder();
+          tipDisplay.textContent = '$0.00';
+          totalAmountDisplay.textContent = '$0.00'
+          let timing = 1000;
+          setTimeout(removeBorder, timing);
+     }
+
+     else if (bill_input.value === '' || isNaN(bill_input.value)) {
+          billShowBorder();
+          let timing = 1000;
+          setTimeout(removeBorder, timing);
+          tipDisplay.textContent = '$0.00';
+          totalAmountDisplay.textContent = '$0.00'
+     }
+
+     else if (people_input.value === '' || isNaN(people_input.value)) {
+          peopleShowBorder();
           tipDisplay.textContent = '$0.00';
           totalAmountDisplay.textContent = '$0.00'
      }
@@ -84,6 +135,10 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
 
           // UI function outputs the values of the calculation into the UI
 
+
+
+
+
           const UI = () => {
                tipDisplay.innerText = tipPerPerson;
                totalAmountDisplay.innerText = totalPerPerson;
@@ -98,6 +153,11 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
 
      }
 }
+
+
+
+
+
 
 const reset = () => {
      tipDisplay.innerText = '$0.00';
@@ -125,6 +185,8 @@ selectBoxes.forEach((box) => box.addEventListener("click", () => {
      const changeBackground = () => {
           box.style.background = 'var(--clr-dark)';
      }
+
+     customInput.value = '';
 
      setTimeout(changeBackground, 1000);
 
