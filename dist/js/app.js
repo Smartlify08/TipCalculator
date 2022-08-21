@@ -184,19 +184,53 @@ selectBoxes.forEach((box) => box.addEventListener("click", () => {
 
      const changeBackground = () => {
           box.style.background = 'var(--clr-dark)';
+          console.log("Background Changed")
      }
 
+
+     // When a percentage is clicked, the custom input value should be cleared
      customInput.value = '';
 
      setTimeout(changeBackground, 1000);
 
+
+
+     // ================Event Listeners==================
+
+
+
+
+
      customInput.addEventListener("input", () => {
-          Calculate(
-               parseFloat(bill_input.value),
-               parseFloat(customInput.value),
-               parseFloat(people_input.value)
-          )
+
+          if (customInput.value === '') {
+               console.log("custom Can't be nothing")
+               tipDisplay.innerText = '$0.00';
+               totalAmountDisplay.innerText = '$0.00';
+          }
+
+          else {
+               Calculate(
+                    parseFloat(bill_input.value),
+                    parseFloat(customInput.value),
+                    parseFloat(people_input.value)
+               )
+          }
+
      });
+
+
+
+
+     // selectBoxes.forEach((box) => {
+     //      box.addEventListener("focus", () => {
+     //           // box.target.style.background = 'var(--clr-light)'
+     //           box.style.background = 'var(--clr-light)'
+     //      })
+     // })
+
+
+
 
 
      bill_input.addEventListener("input", () => {
@@ -215,6 +249,14 @@ selectBoxes.forEach((box) => box.addEventListener("click", () => {
                parseFloat(people_input.value)
           )
      });
+
+
+     // ============Event Listeners End ==============
+
+
+
+
+     // Calling the calculate method to execute calculations
 
      Calculate(
           parseFloat(bill_input.value),
