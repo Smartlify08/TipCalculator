@@ -42,7 +42,7 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
      const showBorder = () => {
           bill_input.style.border = '2px solid red';
           people_input.style.border = '2px solid red';
-          let timing = 1000;
+          let timing = 2000;
           setTimeout(removeBorder, timing);
           errorMessage.forEach((error) => error.style.display = 'block');
      }
@@ -54,7 +54,7 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
           // billSection.appendChild(text);
           // console.log(text.textContent);
           // body.insertBefore(text, tipValues);
-          let timing = 1000;
+          let timing = 2000;
           setTimeout(removeBorder, timing);
           errorMessage[0].style.display = 'block';
      }
@@ -64,7 +64,7 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
      // Show border for people input
      const peopleShowBorder = () => {
           people_input.style.border = '2px solid red'
-          let timing = 1000;
+          let timing = 2000;
           setTimeout(removeBorder, timing);
           errorMessage[1].style.display = 'block'
      }
@@ -98,13 +98,13 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
           showBorder();
           tipDisplay.textContent = '$0.00';
           totalAmountDisplay.textContent = '$0.00'
-          let timing = 1000;
+          let timing = 2000;
           setTimeout(removeBorder, timing);
      }
 
      else if (bill_input.value === '' || isNaN(bill_input.value)) {
           billShowBorder();
-          let timing = 1000;
+          let timing = 2000;
           setTimeout(removeBorder, timing);
           tipDisplay.textContent = '$0.00';
           totalAmountDisplay.textContent = '$0.00'
@@ -151,6 +151,8 @@ const Calculate = (billValue, tipPercentage, peopleValue) => {
           UI();
 
 
+
+
      }
 }
 
@@ -178,171 +180,94 @@ btnReset.addEventListener("click", () => {
 
 // Adding Event listeners to each box 
 
-selectBoxes.forEach((box) => box.addEventListener("click", () => {
+selectBoxes.forEach((box, index) =>
+     box.addEventListener("click", () => {
 
-     box.style.background = 'var(--clr-primary)';
-
-     const changeBackground = () => {
-          box.style.background = 'var(--clr-dark)';
-          console.log("Background Changed")
-     }
+          // console.log(`${selectBoxes[index].innerText} was Clicked`);
 
 
-     // When a percentage is clicked, the custom input value should be cleared
-     customInput.value = '';
+          selectBoxes.forEach((box) => {
+               box.classList.remove('active-state');
+          })
 
-     setTimeout(changeBackground, 1000);
+          selectBoxes[index].classList.add('active-state');
 
+          // box.style.background = 'var(--clr-primary)';
 
-
-     // ================Event Listeners==================
-
-
+          // const changeBackground = () => {
+          //      box.style.background = 'var(--clr-dark)';
+          //      console.log("Background Changed")
+          // }
 
 
 
-     customInput.addEventListener("input", () => {
 
-          if (customInput.value === '') {
-               console.log("custom Can't be nothing")
-               tipDisplay.innerText = '$0.00';
-               totalAmountDisplay.innerText = '$0.00';
-          }
 
-          else {
+          // When a percentage is clicked, the custom input value should be cleared
+          customInput.value = '';
+
+          // setTimeout(changeBackground, 1000);
+
+
+
+          // ================Event Listeners==================
+
+
+          bill_input.addEventListener("input", () => {
                Calculate(
                     parseFloat(bill_input.value),
-                    parseFloat(customInput.value),
+                    parseFloat(box.innerText),
+                    parseFloat(people_input.value)
+               );
+          });
+
+
+          people_input.addEventListener("input", () => {
+               Calculate(
+                    parseFloat(bill_input.value),
+                    parseFloat(box.innerText),
                     parseFloat(people_input.value)
                )
-          }
-
-     });
+          });
 
 
-
-
-     // selectBoxes.forEach((box) => {
-     //      box.addEventListener("focus", () => {
-     //           // box.target.style.background = 'var(--clr-light)'
-     //           box.style.background = 'var(--clr-light)'
-     //      })
-     // })
+          // ============Event Listeners End ==============
 
 
 
 
+          // Calling the calculate method to execute calculations
 
-     bill_input.addEventListener("input", () => {
-          Calculate(
-               parseFloat(bill_input.value),
-               parseFloat(box.innerText),
-               parseFloat(people_input.value)
-          );
-     });
-
-
-     people_input.addEventListener("input", () => {
           Calculate(
                parseFloat(bill_input.value),
                parseFloat(box.innerText),
                parseFloat(people_input.value)
           )
-     });
 
 
-     // ============Event Listeners End ==============
+     }
 
-
-
-
-     // Calling the calculate method to execute calculations
-
-     Calculate(
-          parseFloat(bill_input.value),
-          parseFloat(box.innerText),
-          parseFloat(people_input.value)
      )
-
-
-}));
-
-
-
-
-// class Calculater {
-//      // constructor(billValue, peopleValue, tipPercentage) {
-//      //      this.billValue = billValue;
-//      //      this.peopleValue = peopleValue;
-//      //      this.tipPercentage = tipPercentage;
-//      // }
-
-//      static calculate(billValue, peopleValue, tipPercentage) {
-//           let totalTip = parseFloat(billValue * (tipPercentage / 100)).toFixed(2);
-
-//           let totalAmount = parseFloat(billValue + totalTip).toFixed(2);
-
-//           let tipPerPerson = parseFloat((totalTip) / (peopleValue)).toFixed(2);
-
-//           let totalPerPerson = parseFloat((totalAmount) / (peopleValue)).toFixed(2);
-
-//           console.log(`tipPerPerson:${tipPerPerson}, totalPerPerson ${totalPerPerson}`);
-
-//           // console.log(totalTip);
-//           // console.log(peopleValue)
-//      }
-
-// }
-
-
-// selectBoxes.forEach((box) => {
-//      box.addEventListener("click", () => {
-//           Calculater.calculate(
-//                parseFloat(bill_input.value),
-//                parseFloat(people_input.value),
-//                parseFloat(box.innerText)
-//           );
-//      })
-// })
+);
 
 
 
 
-// class UI {
-//      constructor() {
 
-//      }
+customInput.addEventListener("input", () => {
 
-//      static showError(error) {
-//           error.style.border = `1px solid red`;
-//      }
+     if (customInput.value === '') {
+          // console.log("custom Can't be nothing")
+          tipDisplay.innerText = '$0.00';
+          totalAmountDisplay.innerText = '$0.00';
+     }
 
-//      static addEvents() {
-//           selectBoxes.forEach((box) => {
-//                box.addEventListener("click", Calculate.totalAmount(bill_input, box))
-//           })
-//      }
-// }
+     else {
+          Calculate(
+               parseFloat(bill_input.value),
+               parseFloat(customInput.value),
+               parseFloat(people_input.value)
+          )
+     }
 
-// class Calculate {
-//      constructor() {
-
-//      }
-
-//      static totalTip(billValue, tipPercentage) {
-//           return parseFloat(billValue) * parseFloat(tipPercentage / 100);
-//      }
-
-//      static totalAmount(bill_value, tipPercentage) {
-//           return parseFloat(bill_value) + (parseFloat(bill_value) * parseFloat(tipPercentage / 100))
-//      }
-
-
-
-
-// }
-
-
-
-// UI.addEvents();
-
+});

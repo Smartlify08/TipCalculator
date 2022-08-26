@@ -70,8 +70,6 @@ body{
 
 
 
-
-
 .app-header{
      width: 50%;
      letter-spacing: 20px;
@@ -167,10 +165,12 @@ input[type='submit']{
 
 
 
-
-
-
-
+/* Shows that a particular percentage is active */
+.active-state{
+     background-color: hsl(172, 67%, 45%);
+     color: #fff;
+     border-radius: 4px;
+} 
 
 
 @media screen and (max-width:991px){
