@@ -6,6 +6,9 @@
 
 
 // Getting the inputs and the tipPercentages
+
+
+
 const bill_input = document.querySelector("#bill");
 const people_input = document.querySelector("#people-amount");
 const selectBoxes = document.querySelectorAll('.select-box');
